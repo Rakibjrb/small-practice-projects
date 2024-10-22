@@ -1,0 +1,114 @@
+/* container setup part */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+}
+
+.container {
+  width: 70%;
+  height: 450px;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.hour,
+.miniute,
+.second {
+  width: 30%;
+  border-radius: 8px;
+  display: flex;
+}
+.hour .left,
+.miniute .left,
+.second .left {
+  flex: 1;
+  position: relative;
+}
+
+.hour .right,
+.miniute .right,
+.second .right {
+  flex: 1;
+  position: relative;
+}
+
+/* segment setup part */
+
+.segment {
+  background: #ff0000;
+  border-radius: 5px;
+  width: 138px;
+  height: 20px;
+}
+
+.segment1 {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.segment2 {
+  position: absolute;
+  top: 26%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: rotate(90deg);
+}
+
+.segment3 {
+  position: absolute;
+  top: 68%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: rotate(90deg);
+}
+
+.segment4 {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.segment5 {
+  position: absolute;
+  top: 68%;
+  left: -22%;
+  transform: translate(-50%, -50%);
+  transform: rotate(90deg);
+}
+
+.segment6 {
+  position: absolute;
+  top: 26%;
+  left: -22%;
+  transform: translate(-50%, -50%);
+  transform: rotate(90deg);
+}
+
+.segment7 {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* css for apply on javascript condition */
+
+.segment_hide {
+  background: #ff000047;
+}

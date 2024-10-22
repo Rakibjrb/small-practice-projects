@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7 Segment Display</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="hour">
+        <div class="left mod2">
+          <div class="segment segment1 mod2_segment"></div>
+          <div class="segment segment2 mod2_segment"></div>
+          <div class="segment segment3 mod2_segment"></div>
+          <div class="segment segment4 mod2_segment"></div>
+          <div class="segment segment5 mod2_segment"></div>
+          <div class="segment segment6 mod2_segment"></div>
+          <div class="segment segment7 mod2_segment"></div>
+        </div>
+        <div class="right bcd">
+          <div class="segment segment1 bcd3_right_segment"></div>
+          <div class="segment segment2 bcd3_right_segment"></div>
+          <div class="segment segment3 bcd3_right_segment"></div>
+          <div class="segment segment4 bcd3_right_segment"></div>
+          <div class="segment segment5 bcd3_right_segment"></div>
+          <div class="segment segment6 bcd3_right_segment"></div>
+          <div class="segment segment7 bcd3_right_segment"></div>
+        </div>
+      </div>
+      <div class="miniute">
+        <div class="left mod6">
+          <div class="segment segment1 mod6_2_segment"></div>
+          <div class="segment segment2 mod6_2_segment"></div>
+          <div class="segment segment3 mod6_2_segment"></div>
+          <div class="segment segment4 mod6_2_segment"></div>
+          <div class="segment segment5 mod6_2_segment"></div>
+          <div class="segment segment6 mod6_2_segment"></div>
+          <div class="segment segment7 mod6_2_segment"></div>
+        </div>
+        <div class="right bcd">
+          <div class="segment segment1 bcd2_right_segment"></div>
+          <div class="segment segment2 bcd2_right_segment"></div>
+          <div class="segment segment3 bcd2_right_segment"></div>
+          <div class="segment segment4 bcd2_right_segment"></div>
+          <div class="segment segment5 bcd2_right_segment"></div>
+          <div class="segment segment6 bcd2_right_segment"></div>
+          <div class="segment segment7 bcd2_right_segment"></div>
+        </div>
+      </div>
+      <div class="second">
+        <div class="left mod6">
+          <div class="segment segment1 mod6_1_segment"></div>
+          <div class="segment segment2 mod6_1_segment"></div>
+          <div class="segment segment3 mod6_1_segment"></div>
+          <div class="segment segment4 mod6_1_segment"></div>
+          <div class="segment segment5 mod6_1_segment"></div>
+          <div class="segment segment6 mod6_1_segment"></div>
+          <div class="segment segment7 mod6_1_segment"></div>
+        </div>
+        <div class="right bcd">
+          <div class="segment segment1 bcd1_right_segment"></div>
+          <div class="segment segment2 bcd1_right_segment"></div>
+          <div class="segment segment3 bcd1_right_segment"></div>
+          <div class="segment segment4 bcd1_right_segment"></div>
+          <div class="segment segment5 bcd1_right_segment"></div>
+          <div class="segment segment6 bcd1_right_segment"></div>
+          <div class="segment segment7 bcd1_right_segment"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 segment digital clock logic -->
+    <script src="./script.js"></script>
+  </body>
+</html>
