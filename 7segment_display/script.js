@@ -1,9 +1,11 @@
-const bcd1_right_segment = document.querySelectorAll(".bcd1_right_segment");
-const mod6_1_segment = document.querySelectorAll(".mod6_1_segment");
-const bcd2_right_segment = document.querySelectorAll(".bcd2_right_segment");
-const mod6_2_segment = document.querySelectorAll(".mod6_2_segment");
-const bcd3_right_segment = document.querySelectorAll(".bcd3_right_segment");
-const mod2_segment = document.querySelectorAll(".mod2_segment");
+const bcd1_right_segment = document.querySelectorAll(".bcd1_right_segment"),
+  mod6_1_segment = document.querySelectorAll(".mod6_1_segment"),
+  bcd2_right_segment = document.querySelectorAll(".bcd2_right_segment"),
+  mod6_2_segment = document.querySelectorAll(".mod6_2_segment"),
+  bcd3_right_segment = document.querySelectorAll(".bcd3_right_segment"),
+  mod2_segment = document.querySelectorAll(".mod2_segment"),
+  dots = document.querySelectorAll(".dot"),
+  infos = document.querySelectorAll(".info");
 
 //class add function
 const classListAdd = (element, addClass) => {
@@ -207,7 +209,14 @@ const bcd1_counter = (
   let counter_bcd3 = bcd3;
   let counter_mod2 = mod2;
 
+  console.log(counter_bcd3);
+
   setInterval(() => {
+    dots.forEach((dot) => {
+      classListAdd(dot, "segment_hide");
+      classListRemove(dot, "green_dot");
+    });
+
     //count main second
     counter_bcd = counter_bcd + 1;
 
@@ -268,10 +277,31 @@ const bcd1_counter = (
     //remove class from segment className on every second
     bcd_segment_handler(counter_bcd, bcd1_right_segment);
   }, 1000);
+
+  setInterval(() => {
+    dots.forEach((dot) => {
+      classListRemove(dot, "segment_hide");
+      classListAdd(dot, "green_dot");
+    });
+  }, 2000);
 };
 
-//real time synchronizer function
+//real time and date synchronizer function
 const sync_real_time = () => {
+  //show date
+  const real_date =
+    new Date().getDate() < 10
+      ? `0${new Date().getDate()}`
+      : new Date().getDate();
+  const real_month =
+    new Date().getMonth() < 10
+      ? `0${new Date().getMonth()}`
+      : new Date().getMonth();
+
+  const real_date_month_year = `${real_date} - ${real_month} - ${new Date().getFullYear()}`;
+  infos[0].textContent = real_date_month_year;
+
+  //real time synchronizer settings
   const real_hours =
     new Date().getHours() < 10
       ? `0${new Date().getHours()}`
@@ -287,7 +317,54 @@ const sync_real_time = () => {
       ? `0${new Date().getSeconds()}`
       : new Date().getSeconds();
 
-  const real_time = `${real_hours}:${real_miniutes}:${real_seconds}`;
+  const hour_time_calc = () => {
+    let exact_hour = "01";
+    switch (real_hours) {
+      case 13:
+        exact_hour = "01";
+        break;
+      case 14:
+        exact_hour = "02";
+        break;
+      case 15:
+        exact_hour = "03";
+        break;
+      case 16:
+        exact_hour = "04";
+        break;
+      case 17:
+        exact_hour = "05";
+        break;
+      case 18:
+        exact_hour = "06";
+        break;
+      case 19:
+        exact_hour = "07";
+        break;
+      case 20:
+        exact_hour = "08";
+        break;
+      case 21:
+        exact_hour = "09";
+        break;
+      case 22:
+        exact_hour = "10";
+        break;
+      case 23:
+        exact_hour = "11";
+        break;
+      case 24:
+        exact_hour = "12";
+        break;
+
+      default:
+        exact_hour = exact_hour;
+        break;
+    }
+    return exact_hour;
+  };
+
+  const real_time = `${hour_time_calc()}:${real_miniutes}:${real_seconds}`;
 
   let second = real_time.split(":");
   second = second[2].split("");
@@ -307,6 +384,8 @@ const sync_real_time = () => {
     Number(hours[1]),
     Number(hours[0])
   );
+
+  console.log(real_hours);
   mod6_segment_handler(Number(second[0]), mod6_1_segment);
 
   //miniute count part

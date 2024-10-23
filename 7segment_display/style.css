@@ -15,13 +15,18 @@ body {
   background: #000;
 }
 
+.main_container {
+  padding-bottom: 40px;
+  border-radius: 10px;
+}
+
 .container {
-  width: 70%;
+  width: 1344px;
   height: 450px;
   padding: 20px;
-  border-radius: 10px;
   display: flex;
   justify-content: space-around;
+  position: relative;
 }
 
 .hour,
@@ -30,6 +35,7 @@ body {
   width: 30%;
   border-radius: 8px;
   display: flex;
+  padding-top: 14px;
 }
 .hour .left,
 .miniute .left,
@@ -48,67 +54,119 @@ body {
 /* segment setup part */
 
 .segment {
-  background: #ff0000;
-  border-radius: 5px;
-  width: 138px;
+  background: #00ff00;
+  width: 120px;
   height: 20px;
 }
 
 .segment1 {
   position: absolute;
-  top: 6%;
+  top: 12%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .segment2 {
   position: absolute;
   top: 26%;
-  left: 50%;
+  left: 52%;
   transform: translate(-50%, -50%);
   transform: rotate(90deg);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .segment3 {
   position: absolute;
-  top: 68%;
-  left: 50%;
+  top: 62%;
+  left: 52%;
   transform: translate(-50%, -50%);
   transform: rotate(90deg);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .segment4 {
   position: absolute;
-  bottom: 2%;
+  bottom: 14%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 }
 
 .segment5 {
   position: absolute;
-  top: 68%;
-  left: -22%;
+  top: 62%;
+  left: -14%;
   transform: translate(-50%, -50%);
   transform: rotate(90deg);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 }
 
 .segment6 {
   position: absolute;
   top: 26%;
-  left: -22%;
+  left: -14%;
   transform: translate(-50%, -50%);
   transform: rotate(90deg);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 }
 
 .segment7 {
   position: absolute;
-  top: 49%;
+  top: 46%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border-radius: 30px;
+}
+
+.container .double_dot {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  transform: rotate(90deg);
+}
+
+.container .double_dot .dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.container .double_dot_1 {
+  position: absolute;
+  top: 46%;
+  left: 27%;
+}
+.container .double_dot_2 {
+  position: absolute;
+  top: 46%;
+  left: 59%;
+}
+
+.main_container .other_info {
+  margin-top: -40px;
+  padding: 0 60px;
+}
+
+.main_container .other_info .info {
+  font-size: 50px;
+  color: #00ff00;
+  text-transform: uppercase;
 }
 
 /* css for apply on javascript condition */
 
 .segment_hide {
-  background: #ff000047;
+  background: #0c460cbb;
+}
+
+.green_dot {
+  background: #00ff00;
 }
