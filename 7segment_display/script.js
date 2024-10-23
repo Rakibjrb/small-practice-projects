@@ -192,13 +192,20 @@ const mod2_segment_handler = (counter = 0, mod2_name) => {
 };
 
 //main counder handler and logic
-const bcd1_counter = () => {
-  let counter_bcd = 0;
-  let counter_mod6 = 0;
-  let counter_bcd2 = 0;
-  let counter_mod6_2 = 0;
-  let counter_bcd3 = 0;
-  let counter_mod2 = 0;
+const bcd1_counter = (
+  bcd1 = 0,
+  mod6 = 0,
+  bcd2 = 0,
+  mod6_2 = 0,
+  bcd3 = 0,
+  mod2 = 0
+) => {
+  let counter_bcd = bcd1;
+  let counter_mod6 = mod6;
+  let counter_bcd2 = bcd2;
+  let counter_mod6_2 = mod6_2;
+  let counter_bcd3 = bcd3;
+  let counter_mod2 = mod2;
 
   setInterval(() => {
     //count main second
@@ -263,14 +270,52 @@ const bcd1_counter = () => {
   }, 1000);
 };
 
-//second count part
-bcd1_counter();
-mod6_segment_handler(0, mod6_1_segment);
+//real time synchronizer function
+const sync_real_time = () => {
+  const real_hours =
+    new Date().getHours() < 10
+      ? `0${new Date().getHours()}`
+      : new Date().getHours();
 
-//miniute count part
-bcd_segment_handler(0, bcd2_right_segment);
-mod6_segment_handler(0, mod6_2_segment);
+  const real_miniutes =
+    new Date().getMinutes() < 10
+      ? `0${new Date().getMinutes()}`
+      : new Date().getMinutes();
 
-//hour count part
-bcd_segment_handler(1, bcd3_right_segment);
-mod2_segment_handler(0, mod2_segment);
+  const real_seconds =
+    new Date().getSeconds() < 10
+      ? `0${new Date().getSeconds()}`
+      : new Date().getSeconds();
+
+  const real_time = `${real_hours}:${real_miniutes}:${real_seconds}`;
+
+  let second = real_time.split(":");
+  second = second[2].split("");
+
+  let miniutes = real_time.split(":");
+  miniutes = miniutes[1].split("");
+
+  let hours = real_time.split(":");
+  hours = hours[0].split("");
+
+  //second count part
+  bcd1_counter(
+    Number(second[1]),
+    Number(second[0]),
+    Number(miniutes[1]),
+    Number(miniutes[0]),
+    Number(hours[1]),
+    Number(hours[0])
+  );
+  mod6_segment_handler(Number(second[0]), mod6_1_segment);
+
+  //miniute count part
+  bcd_segment_handler(Number(miniutes[1]), bcd2_right_segment);
+  mod6_segment_handler(Number(miniutes[0]), mod6_2_segment);
+
+  //hour count part
+  bcd_segment_handler(Number(hours[1]), bcd3_right_segment);
+  mod2_segment_handler(Number(hours[0]), mod2_segment);
+};
+
+sync_real_time();
