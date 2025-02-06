@@ -209,14 +209,7 @@ const bcd1_counter = (
   let counter_bcd3 = bcd3;
   let counter_mod2 = mod2;
 
-  console.log(counter_bcd3);
-
   setInterval(() => {
-    dots.forEach((dot) => {
-      classListAdd(dot, "segment_hide");
-      classListRemove(dot, "green_dot");
-    });
-
     //count main second
     counter_bcd = counter_bcd + 1;
 
@@ -280,30 +273,36 @@ const bcd1_counter = (
 
   setInterval(() => {
     dots.forEach((dot) => {
+      classListAdd(dot, "segment_hide");
+      classListRemove(dot, "green_dot");
+    });
+  }, 500);
+
+  setInterval(() => {
+    dots.forEach((dot) => {
       classListRemove(dot, "segment_hide");
       classListAdd(dot, "green_dot");
     });
-  }, 2000);
+  }, 1000);
 };
 
 //real time and date synchronizer function
 const sync_real_time = () => {
   //show date
-  const real_date =
-    new Date().getDate() < 10
-      ? `0${new Date().getDate()}`
-      : new Date().getDate();
-  const real_month =
-    new Date().getMonth() < 10
-      ? `0${new Date().getMonth()}`
-      : new Date().getMonth();
+  function formatDate(date) {
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
 
-  const real_date_month_year = `${real_date} - ${real_month} - ${new Date().getFullYear()}`;
-  infos[0].textContent = real_date_month_year;
+    return `${day} - ${month} - ${year}`;
+  }
+
+  const date = formatDate(new Date());
+  infos[0].textContent = date;
 
   //real time synchronizer settings
   const real_hours =
-    new Date().getHours() < 10
+    new Date().getHours() <= 9
       ? `0${new Date().getHours()}`
       : new Date().getHours();
 
@@ -319,6 +318,7 @@ const sync_real_time = () => {
 
   const hour_time_calc = () => {
     let exact_hour = "01";
+
     switch (real_hours) {
       case 13:
         exact_hour = "01";
@@ -358,7 +358,7 @@ const sync_real_time = () => {
         break;
 
       default:
-        exact_hour = exact_hour;
+        exact_hour = real_hours;
         break;
     }
     return exact_hour;
@@ -384,8 +384,6 @@ const sync_real_time = () => {
     Number(hours[1]),
     Number(hours[0])
   );
-
-  console.log(real_hours);
   mod6_segment_handler(Number(second[0]), mod6_1_segment);
 
   //miniute count part
