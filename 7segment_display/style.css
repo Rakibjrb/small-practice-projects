@@ -164,7 +164,7 @@ body {
 /* css for apply on javascript condition */
 
 .segment_hide {
-  background: #00ff005b;
+  background: rgba(0, 255, 0, 0.3);
 }
 
 .green_dot {
@@ -265,6 +265,6 @@ body {
   }
 
   .segment_hide {
-    background: #00ff005b;
+    background: rgba(0, 255, 0, 0.3);
   }
 }
